@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-''' 
-Test suite for the console
-'''
+""" 
+test console.py
+"""
 
 import models
 import sys
@@ -16,9 +16,9 @@ class test_console(unittest.TestCase):
     """"
 
     def test_quit(self):
-        ''' 
+        """
         test quit
-        '''
+        """
         console = self.create()
         self.assertTrue(console.onecmd("quit"))
 
@@ -36,3 +36,11 @@ class test_console(unittest.TestCase):
         console = self.create()
         console.onecmd("all")
         self.assertTrue(isinstace(self.capt_out.getvalue(), str))
+
+    def test_create(self):
+        '''
+            test create
+        '''
+        console = self.create()
+        console.onecmd("create User")
+        self.assertTrue(isinstance(self.capt_out.getvalue(), str))
