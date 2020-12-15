@@ -37,7 +37,6 @@ class HBNBCommand(cmd.Cmd):
 
     def precmd(self, line):
         """Reformat command line for advanced command syntax.
-
         Usage: <class name>.<command>([<id> [<*args> or <**kwargs>]])
         (Brackets denote optional fields in usage example.)
         """
@@ -118,13 +117,32 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
+         try:
+            args = shlex.split(args)
+            new_instance = eval(args[0])()
+            for arg in args[1:]:
+                try:
+                    key = arg.split("=")[0]
+                    value = arg.split("=")[1]
+                    if value[0] == '"':
+                        value = value.replace("_", " ")
+                        value = value[1:-1]
+                    try:
+                        float(value)
+                    except ValueError:
+                        pass
+                    try:
+                        int(value)
+                    except ValueError:
+                        pass
+                    setattr(new_instance, key, value)
+                except ValueError:
+                    continue
+            new_instance.save()
+            print(new_instance.id)
+
         elif args not in HBNBCommand.classes:
             print("** class doesn't exist **")
-            return
-        new_instance = HBNBCommand.classes[args]()
-        storage.save()
-        print(new_instance.id)
-        storage.save()
 
     def help_create(self):
         """ Help information for the create method """
