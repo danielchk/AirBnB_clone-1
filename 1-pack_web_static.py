@@ -4,6 +4,7 @@ from datetime import datetime
 from fabric.api import *
 
 def do_pack():
+    """comentary error?"""
     now = datetime.now().strftime("%Y%m%d%H%M%S")
     local('mkdir -p versions')
     result = local('tar -czvf versions/web_static_{}.
