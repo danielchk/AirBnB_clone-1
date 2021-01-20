@@ -4,7 +4,7 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
-def index():
+def hello():
     """show Hello HBNB!"""
     return ('Hello HBNB!')
 
@@ -14,7 +14,7 @@ def hbnb():
     return ('HBNB')
 
 @app.route('/c/<text>', strict_slashes=False)
-def cisfun(text):
+def functionc(text):
     """display “C ” followed by the value of the text variable"""
     return ('C ' + text.replace('_', ' '))
 
