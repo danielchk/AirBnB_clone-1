@@ -24,8 +24,6 @@ def functionc(text):
 
 @app.route('/python', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-
-
 def functionp(text='is cool'):
     """show Python followed by text replace to _ or space"""
     return 'Python ' + text.replace('_', ' ')
