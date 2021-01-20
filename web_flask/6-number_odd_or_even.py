@@ -42,13 +42,12 @@ def numbertemplates(n):
 
 
 def oddoreven(n):
-    """display a HTML page only if n is an integer"""
+    """show if odd or even"""
     if n % 2 == 0:
         dig = 'even'
     else:
         dig = 'odd'
-    return render_template('6-number_odd_or_even.html', n=n,
-                           dig=dig)
+    return render_template('6-number_odd_or_even.html', n=n, dig=dig)
 
 
 if __name__ == '__main__':
